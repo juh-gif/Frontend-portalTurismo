@@ -1,27 +1,48 @@
 import React from "react";
-import Footer from "../components/footer";
-import Hero from "../components/hero";
-import Navbar from "../components/navbar";
-import redflores from "../assets/imagens/redflores.webp"
-
+import Footer from "../components/footer";   // Importa o componente Footer (rodapé)
+import Hero from "../components/hero";       // Importa o componente Hero (seção principal)
+import Navbar from "../components/navbar";   // Importa o componente Navbar (barra de navegação)
+import redflores  from "../assets/imagens/redflores.webp"  // Importa a imagem de background para o Hero
+ 
 const Home = () => {
-    return (
-        <>
-            <div className="flex flex-col min-h-screen">
-                <Navbar/>
-                <div>
-                    <Hero Background = {redflores} titulo = "Nova serra Verde" paragrafo="Conheça Nossas Atrações" rota="#" botao="Saiba mais" />
-                    <h1 className="text-center"></h1>
-                    <div>
-
-                    </div>
-                </div>
-                    <Footer />
-            </div>
-
-
-        </>
-    )
+  return (
+    <>
+      {/* Container principal com layout em coluna e altura mínima da tela */}
+      <div className="flex flex-col min-h-screen">
+       
+        {/* Barra de navegação */}
+        <Navbar />
+       
+        <div>
+          {/* Componente Hero com props:
+              - Background: imagem de fundo (repare que a prop começa com maiúscula, verifique se o componente Hero usa isso)
+              - titulo: título principal
+              - paragrafo: texto descritivo
+              - rota: link do botão
+              - botao: texto do botão
+          */}
+          <Hero
+            Background={redflores}
+            titulo="Nova serra Verde"
+            paragrafo="Conheça Nossas Atrações"
+            rota="#"
+            botao="Saiba mais"
+          />
+         
+          {/* Título vazio, pode ser removido ou preenchido */}
+          <h1 className="text-center"></h1>
+         
+          {/* Div vazia, pode remover se não usar */}
+          <div></div>
+        </div>
+       
+        {/* Rodapé */}
+        <Footer />
+      </div>
+    </>
+  );
 }
-
+ 
 export default Home;
+ 
+ 

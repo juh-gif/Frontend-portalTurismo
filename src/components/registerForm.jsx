@@ -5,13 +5,20 @@ const RegisterForm = () => {
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
  
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const novoUsuario = {nome, email}
-        localStorage.setItem('user', JSON.stringify(novoUsuario))
-        window.location.href='/'
-       
-    }
+        try {
+            const response = await axios.post("http://localhost:5000/api/register", {
+                nome: nome,
+                email,
+                senha : passaword
+            });
+            console.log(response.data);
+        } catch (error) {
+            console.error("Erro ao conectar ao servidor", error);
+            alert("erro ao conectar ao servidor");
+        }
+    };
     return (
         <>
             <div className="bg-gray-800 p-8 rounded-2xl shadow-lg w-full max-w-md">

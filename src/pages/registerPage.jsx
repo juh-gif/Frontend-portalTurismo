@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../components/navbar"
 import Footer from "../components/footer"
 import redflores from "../assets/imagens/redflores.webp"
-import RegisterForm from "./registerForm";
+import RegisterForm from "../components/registerForm";
 const RegisterPage = () => {
     return(
         <>

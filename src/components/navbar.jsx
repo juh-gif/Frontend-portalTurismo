@@ -65,7 +65,7 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Menu */}
-            <div className={`lg:hidden bg-gradient-to-r from-green-200 to-green-600 p-4 transition-all duration-300 ${isMenuOpen ? 'block' : 'hidden'}`}>
+            <div className={`lg:hidden bg-gradient-to-r from-amber-200 to-amber-600 p-4 transition-all duration-300 ${isMenuOpen ? 'block' : 'hidden'}`}>
                 {menuLinks}
             </div>
         </nav>

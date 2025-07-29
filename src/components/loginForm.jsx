@@ -1,19 +1,32 @@
 import React, { useState } from "react"
-
+import axios from 'axios'
+import { Navigate, useNavigate } from "react-router"
 const LoginForm = () => {
        const [email ,setEmail] = useState('')
        const [senha, setSenha] = useState ('')
+       const navigate = useNavigate();
 
-
-       const handleSubmit = (e) =>{
-               e.preventDefault();
-               alert(`Email: ${email} \nSenha:${senha}`)
-
-
-
-       }
-
-    return (
+       const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post("http://localhost:5000/api/auth/login", {
+              email,
+              password:senha
+            })
+            const userData = response.data;
+            localStorage.setItem("user", JSON.stringify(userData))
+            alert("usuario logado com sucesso!!")
+            navigate("/")
+          } catch (error) {
+            if (error.response) {
+              alert("Erro ao logar usuário email ou senha incorretos")
+            } else {
+              alert("erro ao conectar ao servidor")
+            }
+          }
+        };
+       
+        return (
 
         <>
 <div className="bg-gray-800 p-8 rounded-2xl shadow-lg w-full max-w-md">
