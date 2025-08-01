@@ -1,5 +1,6 @@
 import React, {useState} from "react";
- 
+import { Navigate } from "react-router";
+import axios from "axios";
 const RegisterForm = () => {
     const [nome, setNome] = useState('')
     const [email, setEmail] = useState('')
@@ -8,14 +9,17 @@ const RegisterForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:5000/api/register", {
-                nome: nome,
+            const response = await axios.post("https://backend-portalturismo-1-q05h.onrender.com/api/users", {
+                name: nome,
                 email,
-                senha : passaword
+               password : senha
             });
-            console.log(response.data);
+            const userData = response.data;
+            localStorage.setItem("user", JSON.stringify(userData));
+            alert("Usuário cadastrado com sucesso!!");
+            Navigate("/");
         } catch (error) {
-            console.error("Erro ao conectar ao servidor", error);
+            console.error("Erro ao cadastrar usuário", error);
             alert("erro ao conectar ao servidor");
         }
     };
